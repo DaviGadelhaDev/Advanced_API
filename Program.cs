@@ -14,13 +14,20 @@ ConfigureAuthentication(builder);
 ConfigureMvc(builder);
 ConfigureServices(builder);
 
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: "MyPolicy", 
+    policy => {
+        policy.WithOrigins("http://localhost:5123").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+    });
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-LoadConfiguration(app);
 
+LoadConfiguration(app);
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
@@ -32,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("MyPolicy");
 app.Run();
 
 void LoadConfiguration(WebApplication app)

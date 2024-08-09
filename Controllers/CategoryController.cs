@@ -25,7 +25,7 @@ namespace Blog.Controllers
                     return GetCategories(context);
                 });
 
-                return Ok(new ResultViewModel<List<Category>>(categories));
+                return Ok(categories);
             }
             catch
             {

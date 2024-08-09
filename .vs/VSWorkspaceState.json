@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\Data",
+    "\\Extensions",
+    "\\Services",
+    "\\ViewModel"
+  ],
+  "SelectedNode": "\\Extensions\\RoleClaimsExtensions.cs",
+  "PreviewInSolutionExplorer": false
+}
